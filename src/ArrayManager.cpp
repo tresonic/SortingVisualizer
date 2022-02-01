@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <chrono>
 #include <thread>
+#include <random>
 
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
@@ -21,7 +22,7 @@ ArrayManager::ArrayManager(sf::RenderWindow& win, size_t len, uint16_t delay) : 
 
 void ArrayManager::shuffle()
 {
-    std::random_shuffle(mArr.begin(), mArr.end());
+    std::shuffle(mArr.begin(), mArr.end(), std::mt19937{});
 }
 
 void ArrayManager::start()
