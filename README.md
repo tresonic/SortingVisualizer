@@ -1,5 +1,6 @@
 SortingVisualizer
 ==========================
+![screenshot](https://user-images.githubusercontent.com/37078118/152035644-c0ede538-abcd-4a7a-9637-a35f9c8da874.png)
 
 Building
 --------
