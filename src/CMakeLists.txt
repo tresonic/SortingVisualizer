@@ -1,5 +1,6 @@
 add_executable(sortviz
   main.cpp
+  ArrayManager.cpp
 )
 
 # Yep, that's it!

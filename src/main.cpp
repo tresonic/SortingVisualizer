@@ -7,10 +7,14 @@
 #include "imgui-SFML.h"
 #include "imgui.h"
 
+#include "ArrayManager.h"
+
 int main() {
   sf::RenderWindow window(sf::VideoMode(1600, 900), "SortingVisualizer");
   window.setFramerateLimit(60);
   ImGui::SFML::Init(window);
+
+  ArrayManager aRenderer{window, 100};
 
   sf::Clock deltaClock;
   while (window.isOpen()) {
@@ -27,10 +31,9 @@ int main() {
 
     ImGui::SFML::Update(window, deltaClock.restart());
 
-
     window.clear();
 
-
+    aRenderer.renderArray();
 
     ImGui::SFML::Render(window);
     window.display();
