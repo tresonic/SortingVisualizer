@@ -32,7 +32,7 @@ FetchContent_Declare(
 ## finally, let's build
 
 # SFML
-option(SFML_BUILD_AUDIO "Build audio" OFF)
+option(SFML_BUILD_AUDIO "Build audio" ON)
 option(SFML_BUILD_NETWORK "Build network" OFF)
 FetchContent_MakeAvailable(sfml)
 
@@ -42,6 +42,6 @@ FetchContent_MakeAvailable(imgui)
 # ImGui-SFML
 set(IMGUI_DIR ${imgui_SOURCE_DIR})
 option(IMGUI_SFML_FIND_SFML "Use find_package to find SFML" OFF)
-option(IMGUI_SFML_IMGUI_DEMO "Build imgui_demo.cpp" ON)
+option(IMGUI_SFML_IMGUI_DEMO "Build imgui_demo.cpp" OFF)
 
 FetchContent_MakeAvailable(imgui-sfml)

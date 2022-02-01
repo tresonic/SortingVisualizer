@@ -1,3 +1,5 @@
+#include <thread>
+
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
@@ -8,6 +10,7 @@
 #include "imgui.h"
 
 #include "ArrayManager.h"
+#include "Sorter.h"
 
 int main()
 {
@@ -15,7 +18,10 @@ int main()
     window.setFramerateLimit(60);
     ImGui::SFML::Init(window);
 
-    ArrayManager aRenderer{window, 100};
+    ArrayManager arrMan{window, 150, 1};
+    arrMan.shuffle();
+    std::thread t{Sorter::cocktail_shaker_sort, std::ref(arrMan)};
+    t.detach();
 
     sf::Clock deltaClock;
     while (window.isOpen()) {
@@ -31,9 +37,12 @@ int main()
 
         ImGui::SFML::Update(window, deltaClock.restart());
 
+        if(t.joinable())
+            puts("asdf");
+
         window.clear();
 
-        aRenderer.renderArray();
+        arrMan.renderArray();
 
         ImGui::SFML::Render(window);
         window.display();
