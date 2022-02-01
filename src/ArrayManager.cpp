@@ -26,7 +26,9 @@ void ArrayManager::shuffle()
 
 void ArrayManager::start()
 {
+    shuffle();
     mSine.play();
+    mIsSorting = true;
 }
 
 arr_type ArrayManager::get(size_t idx)
@@ -66,6 +68,7 @@ void ArrayManager::finish()
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
     mSine.stop();
+    mIsSorting = false;
 }
 
 void ArrayManager::renderArray() const

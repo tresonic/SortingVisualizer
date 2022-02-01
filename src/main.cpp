@@ -10,7 +10,8 @@
 #include "imgui.h"
 
 #include "ArrayManager.h"
-#include "Sorter.h"
+#include "SortAlgs.h"
+#include "ConfigWindow.h"
 
 int main()
 {
@@ -19,9 +20,7 @@ int main()
     ImGui::SFML::Init(window);
 
     ArrayManager arrMan{window, 150, 1};
-    arrMan.shuffle();
-    std::thread t{Sorter::cocktail_shaker_sort, std::ref(arrMan)};
-    t.detach();
+    ConfigWindow configWin;
 
     sf::Clock deltaClock;
     while (window.isOpen()) {
@@ -37,8 +36,8 @@ int main()
 
         ImGui::SFML::Update(window, deltaClock.restart());
 
-        if(t.joinable())
-            puts("asdf");
+        configWin.showConfigWindow();
+        configWin.applyToArrayManager(arrMan);
 
         window.clear();
 

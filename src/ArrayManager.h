@@ -27,7 +27,10 @@ public:
     size_t getSize() { return mArr.size(); }
     void setSize(size_t len);
 
-    bool isSorting;
+    uint16_t getDelay() { return mDelay; }
+    void setDelay(uint16_t delay) { mDelay = delay; };
+
+    bool isSorting() { return mIsSorting; }
 
 private:
     static arr_type map(arr_type x, arr_type in_min, arr_type in_max, arr_type out_min,
@@ -38,4 +41,5 @@ private:
     Sine mSine;
 
     uint16_t mDelay = 300;
+    bool mIsSorting;
 };
