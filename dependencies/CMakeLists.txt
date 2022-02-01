@@ -3,6 +3,7 @@ include(FetchContent)
 set(SFML_VERSION 2.5.1)
 set(IMGUI_VERSION 1.86)
 set(IMGUI_SFML_VERSION 2.5)
+set(BUILD_SHARED_LIBS OFF)
 
 message(STATUS "Fetching third party libraries")
 
