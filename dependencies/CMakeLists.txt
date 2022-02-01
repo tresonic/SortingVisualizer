@@ -1,16 +1,21 @@
 include(FetchContent)
 
 set(SFML_VERSION 2.5.1)
-set(IMGUI_VERSION 1.85)
-set(IMGUI_SFML_VERSION 2.3)
+set(IMGUI_VERSION 1.86)
+set(IMGUI_SFML_VERSION 2.5)
 
 message(STATUS "Fetching third party libraries")
 
 # It's nice to get stripped-down release zips instead of cloning
 # a repo and checking out a tag
+# FetchContent_Declare(
+#   SFML
+#   URL "https://github.com/SFML/SFML/archive/${SFML_VERSION}.zip"
+# )
+
 FetchContent_Declare(
   SFML
-  URL "https://github.com/SFML/SFML/archive/${SFML_VERSION}.zip"
+  GIT_REPOSITORY "https://github.com/SFML/SFML.git"
 )
 
 FetchContent_Declare(
@@ -22,7 +27,6 @@ FetchContent_Declare(
 FetchContent_Declare(
   imgui-sfml
   GIT_REPOSITORY https://github.com/eliasdaler/imgui-sfml.git
-  GIT_TAG        v2.3
   # GIT_COMMIT 5f54b69b6aee18db846c81633f86f78c2586dded
   # ^ or like this - sometimes it's better because FetchContent won't look
   # into remote to see if branch head was updated or not - good for stable

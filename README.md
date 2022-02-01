@@ -20,7 +20,7 @@ You can also set the following options when building:
 * `USE_SYSTEM_DEPS` (`OFF` by default) - search for SFML installed on system instead of fetching it
 * `LINK_DEPS_STATIC` (`ON` by default) - link dependencies statically
 
-Depencies
+Dependencies
 ---
 
 CMake >= 3.12

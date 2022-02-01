@@ -17,7 +17,8 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(1600, 900), "SortingVisualizer");
     window.setFramerateLimit(60);
-    ImGui::SFML::Init(window);
+    if (!ImGui::SFML::Init(window))
+        return 0;
 
     ArrayManager arrMan{window, 150, 1};
     ConfigWindow configWin;
