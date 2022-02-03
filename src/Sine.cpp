@@ -1,7 +1,6 @@
 #include "Sine.h"
 
 #include <cmath>
-#include <cstring>
 #include <iostream>
 
 Sine::Sine()

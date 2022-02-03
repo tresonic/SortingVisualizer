@@ -9,6 +9,7 @@ constexpr unsigned SAMPLES = 4410;
 constexpr unsigned SAMPLE_RATE = 44100;
 constexpr float INV_SAMPLE_RATE = 1.f / SAMPLE_RATE;
 constexpr unsigned AMPLITUDE = 30000;
+constexpr float MY_PI = 3.1415926535;
 
 typedef struct {
     // unsigned int nRate; /* Sampling Rate (sample/sec) */
