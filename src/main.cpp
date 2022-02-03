@@ -51,7 +51,8 @@ int main()
 
         ImGui::SFML::Update(window, deltaClock.restart());
 
-        configWin.showConfigWindow();
+        if(!arrMan.isSorting())
+            configWin.showConfigWindow();
         configWin.applyToArrayManager(arrMan);
 
         window.clear();

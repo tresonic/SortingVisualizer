@@ -12,7 +12,6 @@ add_executable(sortviz
 target_link_libraries(sortviz
   PUBLIC
     ImGui-SFML::ImGui-SFML
-    sfml-audio
     rtaudio
 )
 
