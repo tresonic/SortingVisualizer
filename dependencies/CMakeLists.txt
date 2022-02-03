@@ -8,13 +8,6 @@ set(BUILD_STATIC_LIBS ON)
 
 message(STATUS "Fetching third party libraries")
 
-# It's nice to get stripped-down release zips instead of cloning
-# a repo and checking out a tag
-# FetchContent_Declare(
-#   SFML
-#   URL "https://github.com/SFML/SFML/archive/${SFML_VERSION}.zip"
-# )
-
 FetchContent_Declare(
   SFML
   GIT_REPOSITORY "https://github.com/SFML/SFML.git"
@@ -57,4 +50,5 @@ option(IMGUI_SFML_IMGUI_DEMO "Build imgui_demo.cpp" OFF)
 
 FetchContent_MakeAvailable(imgui-sfml)
 
+option(RTAUDIO_STATIC_MSVCRT OFF)
 FetchContent_MakeAvailable(rtaudio)
