@@ -45,11 +45,11 @@ int Sine::rtaudio_callback(void* outbuf, void* inbuf, unsigned int nFrames, doub
         // std::cout << val << '\n';
         buf[i] = val;
         buf[i+nFrames/2] = val;
-        data->position += 2.f * M_PI * INV_SAMPLE_RATE * data->freq;
+        data->position += 2.f * MY_PI * INV_SAMPLE_RATE * data->freq;
     }
 
 
-    data->position = std::fmod(data->position, 2.f * M_PI);
+    data->position = std::fmod(data->position, 2.f * MY_PI);
 
 
     return 0;
