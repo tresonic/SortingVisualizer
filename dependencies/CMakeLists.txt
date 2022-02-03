@@ -4,6 +4,7 @@ set(SFML_VERSION 2.5.1)
 set(IMGUI_VERSION 1.86)
 set(IMGUI_SFML_VERSION 2.5)
 set(BUILD_SHARED_LIBS OFF)
+set(BUILD_STATIC_LIBS ON)
 
 message(STATUS "Fetching third party libraries")
 
@@ -34,6 +35,11 @@ FetchContent_Declare(
   # tags like 'vX.X' corresponding to releases
 )
 
+FetchContent_Declare(
+    rtaudio
+    GIT_REPOSITORY https://github.com/thestk/rtaudio.git
+)
+
 ## finally, let's build
 
 # SFML
@@ -50,3 +56,5 @@ option(IMGUI_SFML_FIND_SFML "Use find_package to find SFML" OFF)
 option(IMGUI_SFML_IMGUI_DEMO "Build imgui_demo.cpp" OFF)
 
 FetchContent_MakeAvailable(imgui-sfml)
+
+FetchContent_MakeAvailable(rtaudio)

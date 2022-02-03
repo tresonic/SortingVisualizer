@@ -8,10 +8,11 @@ add_executable(sortviz
   ConfigWindow.cpp
 )
 
+
 target_link_libraries(sortviz
   PUBLIC
     ImGui-SFML::ImGui-SFML
-    sfml-graphics
     sfml-audio
+    rtaudio
 )
 
