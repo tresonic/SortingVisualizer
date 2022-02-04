@@ -10,8 +10,9 @@ int Sine::rtaudio_callback(void* outbuf, void* inbuf, unsigned int nFrames, doub
                            RtAudioStreamStatus status, void* userdata)
 {
     (void)inbuf;
+    (void)streamtime;
+    (void)status;
     float* buf = (float*)outbuf;
-    unsigned int remainFrames;
     CallbackData* data = (CallbackData*)userdata;
 
     for (size_t i = 0; i < nFrames; i++) {

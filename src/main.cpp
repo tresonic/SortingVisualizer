@@ -19,15 +19,6 @@
 
 int main()
 {
-    // Sine sine;
-    // sine.setFreq(440);
-    // sine.play();
-    // std::this_thread::sleep_for(std::chrono::seconds(1));
-    // sine.setFreq(880);
-    // std::this_thread::sleep_for(std::chrono::seconds(3));
-    // sine.stop();
-    // return 0;
-
     sf::RenderWindow window(sf::VideoMode(1600, 900), "SortingVisualizer");
     window.setFramerateLimit(60);
     if (!ImGui::SFML::Init(window)) return 0;

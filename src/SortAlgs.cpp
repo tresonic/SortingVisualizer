@@ -1,6 +1,7 @@
 #include "SortAlgs.h"
 
 #include <array>
+#include <cstddef>
 
 #include "ArrayManager.h"
 
@@ -159,14 +160,14 @@ void SortAlgs::merge_sort_merge(ArrayManager& arrMan, size_t left, size_t mid, s
     rightArray.resize(subArrayTwo);
   
     // Copy data to temp arrays leftArray[] and rightArray[]
-    for (auto i = 0; i < subArrayOne; i++)
+    for (size_t i = 0; i < subArrayOne; i++)
         leftArray[i] = arrMan.get(left + i);
-    for (auto j = 0; j < subArrayTwo; j++)
+    for (size_t j = 0; j < subArrayTwo; j++)
         rightArray[j] = arrMan.get(mid + 1 + j);
   
-    auto indexOfSubArrayOne = 0, // Initial index of first sub-array
+    size_t indexOfSubArrayOne = 0, // Initial index of first sub-array
         indexOfSubArrayTwo = 0; // Initial index of second sub-array
-    int indexOfMergedArray = left; // Initial index of merged array
+    size_t indexOfMergedArray = left; // Initial index of merged array
   
     // Merge the temp arrays back into array[left..right]
     while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
@@ -198,7 +199,7 @@ void SortAlgs::merge_sort_merge(ArrayManager& arrMan, size_t left, size_t mid, s
 
 void SortAlgs::quicksort_recursive(ArrayManager& arrMan, size_t lo, size_t hi)
 {
-    if (lo >= 0 && hi >= 0 && lo < hi) {
+    if (lo < hi) {
         size_t p = quicksort_partition(arrMan, lo, hi);
         quicksort_recursive(arrMan, lo, p);
         quicksort_recursive(arrMan, p + 1, hi);

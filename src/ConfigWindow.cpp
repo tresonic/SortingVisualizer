@@ -24,7 +24,7 @@ void ConfigWindow::showConfigWindow(bool isSorting)
 
 void ConfigWindow::applyToArrayManager(ArrayManager& arrMan)
 {
-    if (arrMan.getSize() != mNumElements) arrMan.setSize(mNumElements);
+    if (arrMan.getSize() != size_t(mNumElements)) arrMan.setSize(mNumElements);
 
     if (!arrMan.isSorting()) arrMan.setDelay(mDelay);
 
