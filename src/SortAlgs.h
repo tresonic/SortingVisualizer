@@ -29,10 +29,10 @@ private:
 static const char* ALGO_NAMES[] = {"Bubblesort",     "Cocktail shaker sort",
                                    "Insertion sort", "Inplace merge sort",
                                    "Merge sort",     "Quicksort",
-                                   "Bozosort"};
+                                   /*"Bozosort",*/};
 
 static const std::function<void(ArrayManager&)> ALGO_FUNCS[] = {
     SortAlgs::bubblesort,         SortAlgs::cocktail_shaker_sort, SortAlgs::insertion_sort,
     SortAlgs::inplace_merge_sort, SortAlgs::merge_sort,           SortAlgs::quicksort,
-    SortAlgs::bozosort,
+    /*SortAlgs::bozosort,*/
 };

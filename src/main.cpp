@@ -17,7 +17,6 @@
 #include "ConfigWindow.h"
 #include "SortAlgs.h"
 
-
 int main()
 {
     // Sine sine;
@@ -31,8 +30,7 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(1600, 900), "SortingVisualizer");
     window.setFramerateLimit(60);
-    if (!ImGui::SFML::Init(window))
-        return 0;
+    if (!ImGui::SFML::Init(window)) return 0;
 
     ArrayManager arrMan{window, 150, 1};
     ConfigWindow configWin;
@@ -44,15 +42,14 @@ int main()
             ImGui::SFML::ProcessEvent(event);
 
             if (event.type == sf::Event::Closed ||
-                (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
-                { window.close();
+                (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+                window.close();
             }
         }
 
         ImGui::SFML::Update(window, deltaClock.restart());
 
-        if(!arrMan.isSorting())
-            configWin.showConfigWindow();
+        configWin.showConfigWindow(arrMan.isSorting());
         configWin.applyToArrayManager(arrMan);
 
         window.clear();

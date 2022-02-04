@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <thread>
 #include <random>
 
@@ -68,7 +69,7 @@ void ArrayManager::finish()
     for (size_t i = 0; i < mArr.size(); i++) {
         get(i);
         mCols[i] = END_COL;
-        std::this_thread::sleep_for(std::chrono::milliseconds(5));
+        std::this_thread::sleep_for(std::chrono::milliseconds(5 *  (mDelay > 0 ? 1 : 0)));
     }
     mSine.stop();
     mIsSorting = false;
