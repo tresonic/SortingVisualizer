@@ -9,11 +9,12 @@ const int MAX_ELEMENTS = 500;
 
 class ConfigWindow {
 public:
-    void showConfigWindow();
+    void showConfigWindow(bool isSorting);
     void applyToArrayManager(ArrayManager& arrMan);
 
 private:
     bool mStartSort;
+    bool mShouldStop = false;
     int mSelectedSort = 0;
     int mDelay = 10;
     int mNumElements = 20;
