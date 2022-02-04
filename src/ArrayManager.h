@@ -41,5 +41,5 @@ private:
     Sine mSine;
 
     uint16_t mDelay = 300;
-    bool mIsSorting;
+    bool mIsSorting = false;
 };

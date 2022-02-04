@@ -28,6 +28,8 @@ void ArrayManager::shuffle()
 void ArrayManager::start()
 {
     shuffle();
+    for(auto& c : mCols)
+        c = STD_COL;
     mSine.play();
     mIsSorting = true;
 }
