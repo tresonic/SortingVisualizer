@@ -6,7 +6,28 @@ set(IMGUI_SFML_VERSION 2.5)
 set(BUILD_SHARED_LIBS OFF)
 set(BUILD_STATIC_LIBS ON)
 
-message(STATUS "Fetching third party libraries")
+if(MSVC)
+    execute_process(
+        COMMAND ping www.google.com -n 2
+        ERROR_QUIET
+        RESULT_VARIABLE NO_CONNECTION
+    )
+else()
+    execute_process(
+        COMMAND ping www.google.com -c 2
+        ERROR_QUIET
+        RESULT_VARIABLE NO_CONNECTION
+    )
+endif()
+
+if(NOT NO_CONNECTION EQUAL 0)
+    set(FETCHCONTENT_FULLY_DISCONNECTED ON)
+    message(STATUS "Fetch offline mode: requires already populated _deps")
+else()
+    set(FETCHCONTENT_FULLY_DISCONNECTED OFF)
+    message(STATUS "Fetching third party libraries")
+endif()
+
 
 FetchContent_Declare(
   SFML
