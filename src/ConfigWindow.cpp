@@ -20,6 +20,9 @@ void ConfigWindow::showConfigWindow(bool isSorting)
         mShouldStop = ImGui::Button("Skip");
     }
     ImGui::End();
+
+    ArrayManager::constrain(mDelay, MIN_DELAY, MAX_DELAY);
+    ArrayManager::constrain(mNumElements, MIN_ELEMENTS, MAX_ELEMENTS);
 }
 
 void ConfigWindow::applyToArrayManager(ArrayManager& arrMan)

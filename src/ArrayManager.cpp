@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
-#include <thread>
 #include <random>
+#include <thread>
 
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
@@ -29,7 +29,7 @@ void ArrayManager::shuffle()
 void ArrayManager::start()
 {
     shuffle();
-    for(auto& c : mCols)
+    for (auto& c : mCols)
         c = STD_COL;
     mSine.play();
     mIsSorting = true;
@@ -69,7 +69,7 @@ void ArrayManager::finish()
     for (size_t i = 0; i < mArr.size(); i++) {
         get(i);
         mCols[i] = END_COL;
-        std::this_thread::sleep_for(std::chrono::milliseconds(5 *  (mDelay > 0 ? 1 : 0)));
+        std::this_thread::sleep_for(std::chrono::milliseconds(5 * (mDelay > 0 ? 1 : 0)));
     }
     mSine.stop();
     mIsSorting = false;
@@ -104,4 +104,11 @@ arr_type ArrayManager::map(arr_type x, arr_type in_min, arr_type in_max, arr_typ
                            arr_type out_max)
 {
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+void ArrayManager::constrain(int& val, int min, int max) {
+    if(val < min)
+        val = min;
+    if(val > max)
+        val = max;
 }

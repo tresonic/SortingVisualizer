@@ -32,6 +32,7 @@ public:
 
     bool isSorting() { return mIsSorting; }
 
+    static void constrain(int& val, int min, int max);
 private:
     static arr_type map(arr_type x, arr_type in_min, arr_type in_max, arr_type out_min,
                         arr_type out_max);
