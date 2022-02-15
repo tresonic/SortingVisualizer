@@ -72,6 +72,20 @@ void SortAlgs::insertion_sort(ArrayManager& arrMan)
     arrMan.finish();
 }
 
+void SortAlgs::heapsort(ArrayManager& arrMan)
+{
+    arrMan.start();
+    heapsort_heapify(arrMan);
+
+    size_t end = arrMan.getSize() - 1;
+    while (end > 0) {
+        arrMan.swap(end, 0);
+        end--;
+        heapsort_sift_down(arrMan, 0, end);
+    }
+    arrMan.finish();
+}
+
 void SortAlgs::inplace_merge_sort(ArrayManager& arrMan)
 {
     arrMan.start();
@@ -100,6 +114,39 @@ void SortAlgs::quicksort(ArrayManager& arrMan)
     arrMan.start();
     quicksort_recursive(arrMan, 0, arrMan.getSize() - 1);
     arrMan.finish();
+}
+
+void SortAlgs::heapsort_heapify(ArrayManager& arrMan)
+{
+    auto i_parent = [](size_t i) { return (i - 1) / 2; };
+
+    size_t start = i_parent(arrMan.getSize() - 1);
+    while (start < arrMan.getSize()) {
+        heapsort_sift_down(arrMan, start, arrMan.getSize() - 1);
+        start--;
+    }
+}
+
+void SortAlgs::heapsort_sift_down(ArrayManager& arrMan, size_t start, size_t end)
+{
+    auto i_left_child = [](size_t i) { return 2 * i + 1; };
+    //auto i_right_child = [](size_t i) { return 2 * i + 2; };
+
+    size_t root = start;
+
+    while (i_left_child(root) <= end) {
+        size_t child = i_left_child(root);
+        size_t swap = root;
+
+        if (arrMan.get(swap) < arrMan.get(child)) swap = child;
+        if (child + 1 <= end && arrMan.get(swap) < arrMan.get(child + 1)) swap = child + 1;
+        if(swap == root) {
+            return;
+        } else {
+            arrMan.swap(root, swap);
+            root = swap;
+        }
+    }
 }
 
 void SortAlgs::inplace_merge_sort_recursive(ArrayManager& arrMan, size_t lo, size_t hi)
@@ -152,30 +199,29 @@ void SortAlgs::merge_sort_merge(ArrayManager& arrMan, size_t left, size_t mid, s
 {
     auto const subArrayOne = mid - left + 1;
     auto const subArrayTwo = right - mid;
-  
+
     // Create temp arrays
     std::vector<arr_type> leftArray;
     std::vector<arr_type> rightArray;
     leftArray.resize(subArrayOne);
     rightArray.resize(subArrayTwo);
-  
+
     // Copy data to temp arrays leftArray[] and rightArray[]
     for (size_t i = 0; i < subArrayOne; i++)
         leftArray[i] = arrMan.get(left + i);
     for (size_t j = 0; j < subArrayTwo; j++)
         rightArray[j] = arrMan.get(mid + 1 + j);
-  
+
     size_t indexOfSubArrayOne = 0, // Initial index of first sub-array
         indexOfSubArrayTwo = 0; // Initial index of second sub-array
     size_t indexOfMergedArray = left; // Initial index of merged array
-  
+
     // Merge the temp arrays back into array[left..right]
     while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
         if (leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
             arrMan.set(indexOfMergedArray, leftArray[indexOfSubArrayOne]);
             indexOfSubArrayOne++;
-        }
-        else {
+        } else {
             arrMan.set(indexOfMergedArray, rightArray[indexOfSubArrayTwo]);
             indexOfSubArrayTwo++;
         }

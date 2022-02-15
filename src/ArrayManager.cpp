@@ -106,9 +106,8 @@ arr_type ArrayManager::map(arr_type x, arr_type in_min, arr_type in_max, arr_typ
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-void ArrayManager::constrain(int& val, int min, int max) {
-    if(val < min)
-        val = min;
-    if(val > max)
-        val = max;
+void ArrayManager::constrain(int& val, int min, int max)
+{
+    if (val < min) val = min;
+    if (val > max) val = max;
 }
