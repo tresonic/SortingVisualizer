@@ -10,6 +10,11 @@ SortingVisualizer is a simple program that allows you to watch and listen to dif
 - mergesort
 - quicksort
 
+Binaries
+--------
+![linux](https://github.com/Tresonic/SortingVisualizer/releases/download/latest/linux.zip) - 
+![windows](https://github.com/Tresonic/SortingVisualizer/releases/download/latest/windows.zip)
+
 Building
 --------
 
