@@ -8,6 +8,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
+#include <SFML/Window/VideoMode.hpp>
 
 #include "SFML/Window/Keyboard.hpp"
 #include "imgui-SFML.h"
@@ -19,7 +20,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1600, 900), "SortingVisualizer");
+    sf::RenderWindow window(sf::VideoMode({1600, 900}), "SortingVisualizer");
     window.setFramerateLimit(60);
     if (!ImGui::SFML::Init(window)) return 0;
 

@@ -1,8 +1,7 @@
 include(FetchContent)
 
 set(SFML_VERSION 2.5.1)
-set(IMGUI_VERSION 1.86)
-set(IMGUI_SFML_VERSION 2.5)
+set(IMGUI_VERSION 1.87)
 set(BUILD_SHARED_LIBS OFF)
 set(BUILD_STATIC_LIBS ON)
 
@@ -10,7 +9,8 @@ set(FETCHCONTENT_UPDATES_DISCONNECTED ON)
 
 FetchContent_Declare(
     SFML
-    GIT_REPOSITORY "https://github.com/SFML/SFML.git"
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 5fde1ca613b7c308b6155594e5d067b1a02f5179
 )
 
 FetchContent_Declare(
@@ -21,12 +21,13 @@ FetchContent_Declare(
 FetchContent_Declare(
     imgui-sfml
     GIT_REPOSITORY https://github.com/eliasdaler/imgui-sfml.git
-    # GIT_COMMIT 5f54b69b6aee18db846c81633f86f78c2586dded
+    GIT_TAG 29dbc25b5a4f3e7bde4a07472395071457a7d2ee
 )
 
 FetchContent_Declare(
     rtaudio
     GIT_REPOSITORY https://github.com/thestk/rtaudio.git
+    GIT_TAG ac73fc8aad831cc4e5a91c12db77f884af3f6c61
 )
 
 # if(MSVC)
